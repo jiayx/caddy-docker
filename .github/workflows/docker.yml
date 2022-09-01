@@ -7,7 +7,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  CADDY_VERSION: ${{ github.ref }}
 
 jobs:
   build-and-push-image:
@@ -19,6 +18,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set variables
+        run: |
+          VER=$(cat CADDY_VERSION)
+          echo "CADDY_VERSION=$VER" >> $GITHUB_ENV
 
       - name: Log in to the Container registry
         uses: docker/login-action@v2
@@ -41,7 +45,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.CADDY_VERSION }}
+          tags: ${{ github.ref_name }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             CADDY_VERSION=${{ env.CADDY_VERSION }}
