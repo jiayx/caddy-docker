@@ -1,1 +1,5 @@
-# 自用 caddy-docker 镜像
+# caddy docker image
+
+## add module
+- caddy-l4
+- caddy-trojan
