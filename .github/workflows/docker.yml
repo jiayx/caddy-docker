@@ -7,6 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  CADDY_VERSION: 2.5.2
 
 jobs:
   build-and-push-image:
