@@ -2,4 +2,4 @@
 
 ## add module
 - caddy-l4
-- caddy-trojan
+- and some magic
